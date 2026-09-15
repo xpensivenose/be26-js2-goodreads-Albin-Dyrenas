@@ -1,4 +1,4 @@
-import { baseURL } from "./modules/firebaserequest.js"
+import { baseURL } from "./firebaserequest.js"
 
 export class Books {
     #title 
@@ -6,13 +6,15 @@ export class Books {
     #isRead
     #score
     #id
+    #category
     #url
-    constructor(title, author, isRead, score, id){
+    constructor(title, author, isRead, score, id, category){
         this.#title = title;
         this.#author = author; 
         this.#isRead = isRead;
         this.#score = score; 
         this.#id = id;
+        this.#category = category;
         this.#url = `${baseURL}/${this.#id}.json`; 
     }
     getTitle(){
@@ -21,7 +23,7 @@ export class Books {
     getAuthor(){
         return this.#author;
     }
-    getisRead(){
+    getIsRead(){
         return this.#isRead;
     }
     getScore(){
@@ -31,6 +33,9 @@ export class Books {
     }
     getid(){
         return this.#id;
+    }
+     getCategory(){
+        return this.#category;
     }
     deleteBook(){
         const delOptions = { 
