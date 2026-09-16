@@ -6,15 +6,13 @@ export class Books {
     #isRead
     #score
     #id
-    #category
     #url
-    constructor(title, author, isRead, score, id, category){
+    constructor(title, author, isRead, score, id){
         this.#title = title;
         this.#author = author; 
         this.#isRead = isRead;
         this.#score = score; 
         this.#id = id;
-        this.#category = category;
         this.#url = `${baseURL}/${this.#id}.json`; 
     }
     getTitle(){
@@ -31,11 +29,8 @@ export class Books {
             return this.#score
         }
     }
-    getid(){
+    getId(){
         return this.#id;
-    }
-     getCategory(){
-        return this.#category;
     }
     deleteBook(){
         const delOptions = { 
@@ -96,14 +91,3 @@ export class Books {
     }    
 }
 
-/*     try {
-    const response = await fetch(this.#url, delOptions); 
-    if(!response.ok) {
-        throw new Error('Failed to delete')
-    }
-    const data = await response.json();
-    return 'Book deleted'; 
-}
-catch (error) {
-    throw error; 
-} */
