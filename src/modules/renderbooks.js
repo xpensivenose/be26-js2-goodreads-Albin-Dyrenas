@@ -3,11 +3,7 @@ export function renderBooks(renderObj){
     bookWrapper.textContent = "";
     
     for(const key in renderObj) {
-        console.log(
-    renderObj[key].getTitle(),
-    renderObj[key].getIsRead(),
-    renderObj[key].getScore()
-);
+        
         const cardDiv = document.createElement('div'); 
         const title = document.createElement('h2');
         const liCard = document.createElement('li');
@@ -40,10 +36,8 @@ export function renderBooks(renderObj){
         liCard.id = key; 
         
         title.innerText = `${renderObj[key].getTitle()}`;
-        pCard.innerText =
-        `Author: ${renderObj[key].getAuthor()}
-        Read: ${renderObj[key].getIsRead()}
-        `
+        pCard.innerHTML = `Author: ${renderObj[key].getAuthor()}
+        <br>Read: ${renderObj[key].getIsRead()}`;
         
         if(renderObj[key].getIsRead() === true) {
             btnAdd.innerText = 'Markera som oläst';

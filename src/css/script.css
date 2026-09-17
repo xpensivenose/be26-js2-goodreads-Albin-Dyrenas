@@ -3,6 +3,7 @@ body {
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
     font-family: Arial, sans-serif;
+    justify-content: center;
 }
 h1 {
     background-color: burlywood;
@@ -63,7 +64,6 @@ form input {
 .pCard {
     order: 2;
     margin: 0;
-    white-space: pre-line; /* gör att \n i innerText faktiskt visas som radbrytningar */
     font-size: 1rem;
     color: #110404;
 }
@@ -71,22 +71,22 @@ form input {
 .btnAdd,
 .btnDel {
     order: 4;
-    padding: 0.4rem 0.6rem;   /* mindre padding = mindre knapp */
-    font-size: 1rem;        /* mindre text i knappen */
+    padding: 0.4rem 0.6rem;   
+    font-size: 1rem;        
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    align-self: flex-start;    /* så de inte sträcker sig hela kortets bredd */
+    align-self: flex-start;    
     width: fit-content;
 }
 
 .btnAdd.isRead {
-    background-color: #e47214; /* röd — "klicka för att ångra läst" */
+    background-color: #e47214; 
     color: white;
 }
 
 .btnAdd.isUnread {
-    background-color: #4caf50; /* grön — "klicka för att markera som läst" */
+    background-color: #4caf50; 
     color: white;
 }
 

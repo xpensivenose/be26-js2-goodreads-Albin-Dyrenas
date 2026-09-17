@@ -1,4 +1,4 @@
-import {  getAllBooks, postBooks } from "./modules/firebaserequest.js";
+import { getAllBooks, postBooks } from "./modules/firebaserequest.js";
 import { Books } from "./modules/Books.js";
 import { renderBooks } from "./modules/renderbooks.js";
 
@@ -70,9 +70,5 @@ loadAndRenderBooks()
         }
         renderBooks(booksObject);
     }
-
-
-
-
 
     console.log(form); 
