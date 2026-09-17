@@ -1,6 +1,6 @@
 import { baseURL } from "./firebaserequest.js"
 
-export class Books {
+export class Book {
     #title 
     #author
     #isRead
