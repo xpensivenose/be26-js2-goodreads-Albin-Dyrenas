@@ -70,11 +70,15 @@ loadAndRenderBooks()
         allBooksArray.length = 0;
         const dataForm = await getAllBooks();
         const booksObject = {};
+        const coverPromises = [];
+
         for(const [key, value] of Object.entries(dataForm)) {
             booksObject[key] = new Book(value.title, value.author, value.isRead, 
                 value.score, key);
+                coverPromises.push(booksObject[key].fetchCover());
                 allBooksArray.push(booksObject[key]);
         }
+        await Promise.all(coverPromises);
         renderBooks(booksObject);
     }
 

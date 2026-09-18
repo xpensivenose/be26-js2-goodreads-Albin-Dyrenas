@@ -1,4 +1,5 @@
 import { baseURL } from "./firebaserequest.js"
+import { getBookCover } from "./bookcoverrequest.js";
 
 export class Book {
     #title 
@@ -7,13 +8,15 @@ export class Book {
     #score
     #id
     #url
-    constructor(title, author, isRead, score, id){
+    #coverUrl
+    constructor(title, author, isRead, score, id, isbn){
         this.#title = title;
         this.#author = author; 
         this.#isRead = isRead;
         this.#score = score; 
         this.#id = id;
-        this.#url = `${baseURL}/${this.#id}.json`; 
+        this.#url = `${baseURL}/${this.#id}.json`;
+        this.#coverUrl = "";
     }
     getTitle(){
         return this.#title;
@@ -32,6 +35,10 @@ export class Book {
     getId(){
         return this.#id;
     }
+    getCoverUrl(){
+        return this.#coverUrl;
+    }
+
     deleteBook(){
         const delOptions = { 
             method: 'DELETE'
@@ -88,6 +95,15 @@ export class Book {
             .catch(error => { 
                 throw error;
             });
-    }    
+    }
+    
+    async fetchCover(){
+        try {
+            this.#coverUrl = await getBookCover(this.#title, this.#author);
+        } catch (error) {
+            console.log('Kunde inte hämta omslag:', error);
+            this.#coverUrl = "";
+        }
+    }
 }
 

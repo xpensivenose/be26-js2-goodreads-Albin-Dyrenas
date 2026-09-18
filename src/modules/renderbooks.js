@@ -1,5 +1,3 @@
-import { getBookCover } from "./bookcoverrequest.js";
-
 export function renderBooks(booksObj){
     const bookWrapper = document.querySelector('#bookWrapper');
     bookWrapper.textContent = "";
@@ -17,6 +15,7 @@ export function renderBooks(booksObj){
         pCard.classList.add('pCard'); 
 
         const {btnAdd, btnDel} = createButtons(booksObj[key]);
+        const renderBookCover = createBookCover(booksObj[key].getCoverUrl());
         
         bookWrapper.append(cardDiv);
         cardDiv.append(liCard); 
@@ -32,7 +31,7 @@ export function renderBooks(booksObj){
             pCard.innerText += `\nRating: ${booksObj[key].getScore()}`; //använde\n på rating för att det inte blev bra med <br>
             liCard.append(selectionGrade);
         } 
-        liCard.append(title, pCard, btnAdd, btnDel);
+        liCard.append(title, pCard, btnAdd, btnDel, renderBookCover);
     }
 }
 
@@ -42,7 +41,7 @@ function createSelectScore(book) {
 
     const optionsSelectArray = [1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10];
 
-    for (const grade of optionsSelectArray) {
+    for(const grade of optionsSelectArray) {
         const optionsSelect = document.createElement('option');
         optionsSelect.classList.add('optionsGrade');
         optionsSelect.innerText = grade; 
@@ -78,17 +77,16 @@ function createButtons(book){
     return { btnAdd, btnDel }; 
 }
 
-async function createBookCover(book) {
-    const bookApi = await getBookCover(book.getTitle(), book.getAuthor());
-    const bookCover = document.createElement('img');
-    bookCover.classList.add('bookCover');
-    
-    if(!bookApi) {
-        bookCover.innerText = 'Finns ingen omslagsbild'; 
+function createBookCover(coverUrl) { 
+    const noBookCover = document.createElement('span');
+    noBookCover.innerText = 'Hittar inte bild';
+
+    if(!coverUrl){
+        return noBookCover;
+    } else {
+        const bookCover = document.createElement('img');
+        bookCover.classList.add('bookCover');
+        bookCover.src = coverUrl;
+        return bookCover;
     }
-    else {
-
-    }
-
-
 }
