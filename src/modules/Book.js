@@ -9,7 +9,7 @@ export class Book {
     #id
     #url
     #coverUrl
-    constructor(title, author, isRead, score, id, isbn){
+    constructor(title, author, isRead, score, id){
         this.#title = title;
         this.#author = author; 
         this.#isRead = isRead;

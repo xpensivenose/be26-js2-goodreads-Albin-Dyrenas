@@ -33,7 +33,8 @@ loadAndRenderBooks()
         
     });
 
-    //Hittar rätt ID och patchar rätt bok, och när man trycket på add/delknappen så förändras förälden(liCard),
+    //Hittar rätt ID och patchar rätt bok, och när man trycker på add/delknappen så förändras förälden(liCard),
+    // Så parentElementet ger rätt bok id utan att behöva söka i domen 
     bookWrapper.addEventListener("click", async event => {
         if(event.target.classList.contains('btnAdd')) {
             const btnWrapper = event.target.parentElement; 
@@ -60,12 +61,6 @@ loadAndRenderBooks()
         };
     })
 
-    //Tömmer arrayn för att det inte ska bli dubletter vid rendering. 
-    // hämtar sedan alla böcker från firebase
-    // Gör ett tomt bok objekt som sedan fylls med flera böcker 
-    // sedan loopar jag för att sätta dit den nya bok-instansen av klassen med nyckelparen key och value i det tomma bok objektet.
-    // pushar sedan bok instansen med rätt id till den tomma arrayn 
-    // hämtar renderingen av alla böcker och sätter in booksobjectet så allting får rätt struktur på hemsidan 
     async function loadAndRenderBooks() {
         allBooksArray.length = 0;
         const dataForm = await getAllBooks();
@@ -78,8 +73,8 @@ loadAndRenderBooks()
                 coverPromises.push(booksObject[key].fetchCover());
                 allBooksArray.push(booksObject[key]);
         }
+        //Väntar in alla anrop till covers innan rendering, så sidan inte blir seg 
+        // av att hämta ett omslag i taget 
         await Promise.all(coverPromises);
         renderBooks(booksObject);
     }
-
-    console.log(form); 

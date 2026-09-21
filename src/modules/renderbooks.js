@@ -28,7 +28,9 @@ export function renderBooks(booksObj){
     
         if(booksObj[key].getIsRead() === true) {
             const {selectionGrade} = createSelectScore(booksObj[key]);
-            pCard.innerText += `\nRating: ${booksObj[key].getScore()}`; //använde\n på rating för att det inte blev bra med <br>
+            //använde \n på rating för att det inte fungerar med <br>
+            //Eftersom kodraden ovanför bytte tillbaka till innerText. 
+            pCard.innerText += `\nRating: ${booksObj[key].getScore()}`; 
             liCard.append(selectionGrade);
         } 
         liCard.append(title, pCard, btnAdd, btnDel, renderBookCover);
@@ -38,7 +40,6 @@ export function renderBooks(booksObj){
 function createSelectScore(book) {
     const selectionGrade = document.createElement('select');
     selectionGrade.classList.add('selectionGrade');
-
     const optionsSelectArray = [1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10];
 
     for(const grade of optionsSelectArray) {
@@ -78,6 +79,7 @@ function createButtons(book){
 }
 
 function createBookCover(coverUrl) { 
+    //CoverUrl är tomt om API:et inte hittar en bild. 
     const noBookCover = document.createElement('span');
     noBookCover.innerText = 'Hittar inte bild';
 

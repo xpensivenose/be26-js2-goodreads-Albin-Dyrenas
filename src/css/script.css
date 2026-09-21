@@ -114,5 +114,5 @@ form input {
     max-width: 150px;
     height: auto;
     display: block;
-    order: 1; /* eftersom du redan använder order på andra element i kortet */
+    order: 1; 
 }
