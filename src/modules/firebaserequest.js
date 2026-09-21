@@ -1,4 +1,4 @@
-export const baseURL = "https://goodreads-1a2ce-default-rtdb.europe-west1.firebasedatabase.app/book";
+export const baseURL = "https://goodreads-1a2ce-default-rtdb.europe-west1.firebasedatabase.app/books";
 
 export async function postBooks(newBooks) {
   try {
