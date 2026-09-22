@@ -1,0 +1,118 @@
+body {
+    display: grid;  
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+}
+h1 {
+    background-color: burlywood;
+    padding: 1rem;
+}
+#bookWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cardDiv {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 0 1px 4px rgba(14, 2, 2, 0.1);
+}
+
+.liCard {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+form input {
+    font-size: 1.2rem;
+    padding: 0.6rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+#submitFormBtn {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+.title {
+    order:2;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.pCard {
+    order: 3;
+    margin: 0;
+    font-size: 1rem;
+    color: #110404;
+}
+
+.btnToggle,
+.btnDel {
+    order: 5;
+    padding: 0.4rem 0.6rem;   
+    font-size: 1rem;        
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;    
+    width: fit-content;
+}
+
+.btnToggle.isRead {
+    background-color: #e47214; 
+    color: white;
+}
+
+.btnToggle.isUnread {
+    background-color: #4caf50; 
+    color: white;
+}
+
+.btnToggle:hover {
+    filter: brightness(0.8);
+}
+
+.btnDel {
+    background-color: #e53935;
+    color: white;
+}
+
+.btnDel:hover {
+    filter:brightness(0.8);
+}
+
+.selectionGrade {
+    order: 4;
+    align-self: flex-start;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.bookCover {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    order: 1; 
+}
