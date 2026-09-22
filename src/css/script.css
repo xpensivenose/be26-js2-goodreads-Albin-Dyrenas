@@ -68,7 +68,7 @@ form input {
     color: #110404;
 }
 
-.btnAdd,
+.btnToggle,
 .btnDel {
     order: 5;
     padding: 0.4rem 0.6rem;   
@@ -80,17 +80,17 @@ form input {
     width: fit-content;
 }
 
-.btnAdd.isRead {
+.btnToggle.isRead {
     background-color: #e47214; 
     color: white;
 }
 
-.btnAdd.isUnread {
+.btnToggle.isUnread {
     background-color: #4caf50; 
     color: white;
 }
 
-.btnAdd:hover {
+.btnToggle:hover {
     filter: brightness(0.8);
 }
 

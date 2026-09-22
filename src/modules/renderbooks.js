@@ -14,7 +14,7 @@ export function renderBooks(booksObj){
         liCard.classList.add('liCard'); 
         pCard.classList.add('pCard'); 
 
-        const {btnAdd, btnDel} = createButtons(booksObj[key]);
+        const {btnToggle, btnDel} = createButtons(booksObj[key]);
         const renderBookCover = createBookCover(booksObj[key].getCoverUrl());
         
         bookWrapper.append(cardDiv);
@@ -33,7 +33,7 @@ export function renderBooks(booksObj){
             pCard.innerText += `\nRating: ${booksObj[key].getScore()}`; 
             liCard.append(selectionGrade);
         } 
-        liCard.append(title, pCard, btnAdd, btnDel, renderBookCover);
+        liCard.append(title, pCard, btnToggle, btnDel, renderBookCover);
     }
 }
 
@@ -60,22 +60,22 @@ function createSelectScore(book) {
 }
 
 function createButtons(book){
-    const btnAdd = document.createElement('button');
+    const btnToggle = document.createElement('button');
     const btnDel = document.createElement('button');
-    btnAdd.classList.add('btnAdd');
+    btnToggle.classList.add('btnToggle');
     btnDel.classList.add('btnDel');
     btnDel.innerText = ('Ta bort bok');
     
     if(book.getIsRead() === true) {
-        btnAdd.classList.add('isRead');
-        btnAdd.innerText = 'Markera som oläst';
+        btnToggle.classList.add('isRead');
+        btnToggle.innerText = 'Markera som oläst';
     }
     else {
-        btnAdd.classList.add('isUnread');
-        btnAdd.innerText = 'Markera som läst';
+        btnToggle.classList.add('isUnread');
+        btnToggle.innerText = 'Markera som läst';
     } 
 
-    return { btnAdd, btnDel }; 
+    return { btnToggle, btnDel }; 
 }
 
 function createBookCover(coverUrl) { 

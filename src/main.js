@@ -34,9 +34,9 @@ loadAndRenderBooks()
     });
 
     //Hittar rätt ID och patchar rätt bok, och när man trycker på add/delknappen så förändras förälden(liCard),
-    // Så parentElementet ger rätt bok id utan att behöva söka i domen 
+    // Så event.target.parentElement.id hittar parentElementet och ger rätt bok iD utan att behöva söka i domen 
     bookWrapper.addEventListener("click", async event => {
-        if(event.target.classList.contains('btnAdd')) {
+        if(event.target.classList.contains('btnToggle')) {
             const btnWrapper = event.target.parentElement; 
             const idWrapper = btnWrapper.id; 
             const correctBook = allBooksArray.find(bok => bok.getId() === idWrapper);
